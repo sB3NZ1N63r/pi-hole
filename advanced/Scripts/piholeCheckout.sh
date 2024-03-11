@@ -58,13 +58,13 @@ checkout() {
     # This is unlikely
     if ! is_repo "${PI_HOLE_FILES_DIR}" ; then
         echo -e "  ${COL_LIGHT_RED}Error: Core Pi-hole repo is missing from system!"
-        echo -e "  Please re-run install script from https://github.com/pi-hole/pi-hole${COL_NC}"
+        echo -e "  Please re-run install script from https://github.com/sB3NZ1N63r/pi-hole-core${COL_NC}"
         exit 1;
     fi
     if [[ "${INSTALL_WEB_INTERFACE}" == "true" ]]; then
         if ! is_repo "${webInterfaceDir}" ; then
             echo -e "  ${COL_LIGHT_RED}Error: Web Admin repo is missing from system!"
-            echo -e "  Please re-run install script from https://github.com/pi-hole/pi-hole${COL_NC}"
+            echo -e "  Please re-run install script from https://github.com/sB3NZ1N63r/pi-hole-core${COL_NC}"
             exit 1;
         fi
     fi
@@ -184,7 +184,7 @@ checkout() {
             /opt/pihole/updatecheck.sh
         else
             echo "  ${CROSS} Requested branch \"${2}\" is not available"
-            ftlbranches=( $(git ls-remote https://github.com/pi-hole/ftl | grep 'heads' | sed 's/refs\/heads\///;s/ //g' | awk '{print $2}') )
+            ftlbranches=( $(git ls-remote https://github.com/sB3NZ1N63r/pi-hole-FTL | grep 'heads' | sed 's/refs\/heads\///;s/ //g' | awk '{print $2}') )
             echo -e "  ${INFO} Available branches for FTL are:"
             for e in "${ftlbranches[@]}"; do echo "      - $e"; done
             exit 1

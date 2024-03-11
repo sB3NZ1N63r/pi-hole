@@ -450,6 +450,7 @@ ProcessDHCPSettings() {
 dhcp-authoritative
 dhcp-range=${DHCP_START},${DHCP_END},${leasetime}
 dhcp-option=option:router,${DHCP_ROUTER}
+dhcp-option=option:dns-server,${DHCP_DNS}
 dhcp-leasefile=/etc/pihole/dhcp.leases
 #quiet-dhcp
 " > "${dhcpconfig}"
@@ -494,10 +495,11 @@ EnableDHCP() {
     addOrEditKeyValPair "${setupVars}" "DHCP_START" "${args[2]}"
     addOrEditKeyValPair "${setupVars}" "DHCP_END" "${args[3]}"
     addOrEditKeyValPair "${setupVars}" "DHCP_ROUTER" "${args[4]}"
-    addOrEditKeyValPair "${setupVars}" "DHCP_LEASETIME" "${args[5]}"
-    addOrEditKeyValPair "${setupVars}" "PIHOLE_DOMAIN" "${args[6]}"
-    addOrEditKeyValPair "${setupVars}" "DHCP_IPv6" "${args[7]}"
-    addOrEditKeyValPair "${setupVars}" "DHCP_rapid_commit" "${args[8]}"
+    addOrEditKeyValPair "${setupVars}" "DHCP_DNS" "${args[5]}"
+    addOrEditKeyValPair "${setupVars}" "DHCP_LEASETIME" "${args[6]}"
+    addOrEditKeyValPair "${setupVars}" "PIHOLE_DOMAIN" "${args[7]}"
+    addOrEditKeyValPair "${setupVars}" "DHCP_IPv6" "${args[8]}"
+    addOrEditKeyValPair "${setupVars}" "DHCP_rapid_commit" "${args[9]}"
 
     # Remove possible old setting from file
     removeKey "${dnsmasqconfig}" "dhcp-"

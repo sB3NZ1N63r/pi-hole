@@ -1,4 +1,5 @@
-FROM buildpack-deps:buster-scm
+FROM fedora:41
+RUN dnf install -y git initscripts
 
 ENV GITDIR /etc/.pihole
 ENV SCRIPTDIR /opt/pihole
